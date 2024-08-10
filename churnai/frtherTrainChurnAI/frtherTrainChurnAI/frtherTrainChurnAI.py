@@ -1,4 +1,4 @@
-#create a model
+#further train an existing model
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -44,22 +44,17 @@ preprocessor = ColumnTransformer(
     remainder='passthrough'
 )
 
-# Define the model
-model = RandomForestClassifier(n_estimators=100, random_state=42)
+# Load the existing model
+model_path = r'D:\churnai\churn detect ai\churn detect ai\churn_prediction_model2.0.pkl'
+pipeline = joblib.load(model_path)
 
-# Create a pipeline that combines the preprocessing step and the model
-pipeline = Pipeline(steps=[
-    ('preprocessor', preprocessor),
-    ('classifier', model)
-])
-
-# Split the data
+# Split the new data
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Train the model
+# Further train the existing model
 pipeline.fit(X_train, y_train)
 
-# Predict and evaluate
+# Predict and evaluate on the new test set
 y_pred = pipeline.predict(X_test)
 y_proba = pipeline.predict_proba(X_test)[:, 1]
 
@@ -76,7 +71,7 @@ print(f"Recall: {recall}")
 print(f"F1 Score: {f1}")
 print(f"ROC AUC Score: {roc_auc}")
 
-# Hyperparameter tuning (optional)
+# (Optional) Perform hyperparameter tuning on the updated model
 param_grid = {
     'classifier__n_estimators': [50, 100, 200],
     'classifier__max_depth': [None, 10, 20, 30],
@@ -86,9 +81,11 @@ param_grid = {
 grid_search = GridSearchCV(estimator=pipeline, param_grid=param_grid, cv=3, n_jobs=-1, verbose=2)
 grid_search.fit(X_train, y_train)
 
-# Best model
+# Save the best model if tuning was performed
 best_model = grid_search.best_estimator_
 print(f"Best parameters: {grid_search.best_params_}")
 
-# Save the best model
-joblib.dump(best_model, r'D:\churnai\churn detect ai\churn detect ai\churn_prediction_model2.0.pkl')
+# Save the further trained model
+joblib.dump(best_model, model_path)
+print(f"Model updated and saved at {model_path}")
+

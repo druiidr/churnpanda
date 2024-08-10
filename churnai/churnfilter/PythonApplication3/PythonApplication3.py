@@ -1,3 +1,5 @@
+#filter the data to churned and active
+
 import pandas as pd
 import glob
 

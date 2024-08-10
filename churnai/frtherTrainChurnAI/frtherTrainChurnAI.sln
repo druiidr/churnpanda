@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "frtherTrainChurnAI", "frtherTrainChurnAI\frtherTrainChurnAI.pyproj", "{C32C8C20-FF99-4C6A-9C64-99D6B922FECB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C32C8C20-FF99-4C6A-9C64-99D6B922FECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C32C8C20-FF99-4C6A-9C64-99D6B922FECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6BB53C1C-8005-4919-B9F9-DE3F0C3099A5}
+	EndGlobalSection
+EndGlobal
